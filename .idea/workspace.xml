@@ -130,12 +130,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/Unit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/tests/Unit" />
     </key>
   </component>
@@ -153,7 +154,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601104112591</updated>
-      <workItem from="1601104113610" duration="89000" />
+      <workItem from="1601104113610" duration="8090000" />
     </task>
     <servers />
   </component>
@@ -161,9 +162,17 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="523" y="194" key="NewPhpClassDialog" timestamp="1601104139990">
+    <state x="523" y="194" key="NewPhpClassDialog" timestamp="1601105944560">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="523" y="194" key="NewPhpClassDialog/0.23.1440.877@0.23.1440.877" timestamp="1601104139990" />
+    <state x="523" y="194" key="NewPhpClassDialog/0.23.1440.877@0.23.1440.877" timestamp="1601105944560" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1601107297149">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.23.1440.877@0.23.1440.877" timestamp="1601107297149" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1601111589115">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1601111589115" />
   </component>
 </project>
