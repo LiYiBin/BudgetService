@@ -57,22 +57,15 @@ class BudgetServiceTest extends TestCase
         $this->amountShouldBe(2500.00, new \DateTime('2020-09-01'), new \DateTime('2020-10-31'));
     }
 
-    public function test_three_months()
-    {
-        $this->givenBudget(['202009' => 1000, '202010' => 1500, '202011' => 1200]);
-        $this->amountShouldBe(3700, new \DateTime('2020-09-01'), new \DateTime('2020-11-30'));
-    }
-
     public function test_one_day()
     {
         $this->givenBudget(['202009' => 300]);
         $this->amountShouldBe(10, new \DateTime('2020-09-01'), new \DateTime('2020-09-01'));
     }
 
-    //    public function test_multi_days()
-    //    {
-    //        $this->givenBudget(['202009' => 300]);
-    //
-    //        $this->amountShouldBe(130.00, new \DateTime('2020-09-01'), new \DateTime('2020-09-13'));
-    //    }
+    public function test_multiple_days()
+    {
+        $this->givenBudget(['202009' => 300]);
+        $this->amountShouldBe(130, new \DateTime('2020-09-01'), new \DateTime('2020-09-13'));
+    }
 }
