@@ -6,5 +6,5 @@ namespace App;
 
 interface IBudgetRepo
 {
-    public function getAll();
+    public function getAll() : array;
 }

@@ -2,9 +2,11 @@
 
 namespace App;
 
+use DateTimeImmutable;
+
 class BudgetService
 {
-    private $budgetRepo;
+    private IBudgetRepo $budgetRepo;
 
     public function __construct($budgetRepo)
     {
@@ -17,42 +19,21 @@ class BudgetService
             return 0;
         }
 
-        $allAmount=$this->budgetRepo->getAll();
+        $allBudget = $this->budgetRepo->getAll();
 
+        return collect($allBudget)->reduce(function ($totalAmount, $budget) use ($start, $end) {
+            $budgetYearMonth = DateTimeImmutable::createFromFormat('Ym', $budget->yearMonth);
 
+            $budgetFistDate = $budgetYearMonth->modify('first day of this month');
+            $budgetLastDate = $budgetYearMonth->modify('last day of this month');
 
-        if ($start->format('c') === $end->format('c')) {
-            $amount = $allAmount[$start->format('Ym')];
+            $startDate = $budgetFistDate > $start ? $budgetFistDate : $start;
+            $endDate = $budgetLastDate < $end ? $budgetLastDate : $end;
 
-            $thisMonthDays = cal_days_in_month(CAL_GREGORIAN, $start->format('m'), $start->format('Y'));
+            $thisMonthDays = cal_days_in_month(CAL_GREGORIAN, $budgetYearMonth->format('m'), $budgetYearMonth->format('Y'));
+            $totalDays = $endDate->format('d') - $startDate->format('d') + 1;
 
-            return round($amount / $thisMonthDays, 2);
-        }
-
-        if ($start->format('d') == $start->modify('first day of this month')->format('d')  &&
-            $end->format('d') == $end->modify('last day of this month')->format('d')) {
-
-            $totalMonths = $end->format('m') - $start->format('m') + 1;
-
-            $totalAmount = 0;
-            for ($i = 0; $i < $totalMonths ; $i++) {
-                $next = $start->modify("+$i month");
-
-                $totalAmount += $allAmount[$next->format('Ym')] ?? 0;
-            }
-
-            return round($totalAmount, 2);
-        }
-
-        if ($start->format('Ym')===$end->format('Ym')) {
-            $amount = $allAmount[$start->format('Ym')];
-
-            $thisMonthDays = cal_days_in_month(CAL_GREGORIAN, $start->format('m'), $start->format('Y'));
-            $total_day = $end->format('d') - $start->format('d') + 1;
-
-            return round($amount / $thisMonthDays * $total_day, 2);
-        }
-
-        return 0;
+            return $totalAmount + round($budget->amount / $thisMonthDays * $totalDays, 2);
+        }, 0.0);
     }
 }

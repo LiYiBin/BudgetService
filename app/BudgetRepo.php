@@ -6,7 +6,7 @@ namespace App;
 
 class BudgetRepo implements iBudgetRepo
 {
-    public function getAll() {
+    public function getAll() : array {
         return [];
     }
 }
